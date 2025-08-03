@@ -1,0 +1,119 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class employee_info
+{
+private:
+    string name, department, date; // name, employee department, date of joining
+    int emp_id, ph_no;             // employee id, phone number
+    static int count;              // declaration of static data
+
+public:
+
+    employee_info() // default constructor
+    {
+        cout << "\nEmployee information with default constructor:" << endl;
+        name = "N/A";
+        department = "N/A";
+        date = "N/A";
+        emp_id = 0;
+        ph_no = 0;
+        count++;
+    }
+
+    employee_info(string a, string b, string c, int d, int e) // parameterized constructor
+    {
+        cout << "\nEmployee information with parameterized constructor:" << endl;
+        name = a;
+        department = b;
+        date = c;
+        emp_id = d;
+        ph_no = e;
+        count++;
+    }
+
+    void accept();
+
+    void display();
+
+    inline void thank_you() // inline function
+    {
+        cout << "\nThank you for using the Employee Info System!" << endl;
+    }
+
+    employee_info(const employee_info &obj) // copy constructor
+    {
+        cout << "\nEmployee information with copy constructor:" << endl;
+        name = obj.name;
+        department = obj.department;
+        date = obj.date;
+        emp_id = obj.emp_id;
+        ph_no = obj.ph_no;
+        count++;
+    }
+
+    static void showcount()
+    {
+        cout << "\nNumber of objects created: " << count << endl;
+        cout << "_________________________________________________________________" << endl;
+    }
+
+    ~employee_info()
+    {
+        cout << "\nNumber of objects destructed: " << count << endl;
+        count--;
+    }
+};
+
+void employee_info::accept()
+{
+    cout << "Enter your name: " << endl;
+    cin >> name;
+
+    cout << "Enter your department: " << endl;
+    cin >> department;
+
+    cout << "Enter your joining date: " << endl;
+    cin >> date;
+
+    cout << "Enter your employee id: " << endl;
+    cin >> emp_id;
+
+    cout << "Enter your phone number: " << endl;
+    cin >> ph_no;
+}
+
+int employee_info::count = 0;
+
+void employee_info::display()
+{
+    cout << "\n----------Employee Information-----------" << endl;
+    cout << "Your name is " << name << "." << endl;
+    cout << "Your department is " << department << "." << endl;
+    cout << "Your joining date is " << date << "." << endl;
+    cout << "Your employee id is " << emp_id << "." << endl;
+    cout << "Your phone number is " << ph_no << "." << endl;
+    showcount();
+}
+
+int main()
+{
+    // Dynamic memory allocation
+    employee_info* emp1 = new employee_info;
+    emp1->display();
+
+    employee_info* emp2 = new employee_info("sanskruti", "comp", "15_july_2008", 1092, 123654789);
+    emp2->display();
+
+    employee_info* emp3 = new employee_info(*emp2); // Copy constructor
+    emp3->display();
+    emp3->thank_you();
+
+    // Deallocation
+    delete emp1;
+    delete emp2;
+    delete emp3;
+
+    return 0;
+}
