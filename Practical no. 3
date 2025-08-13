@@ -1,0 +1,128 @@
+#include <iostream>
+#include<string>
+using namespace std;
+   //Base class
+	class staff
+	{
+	protected:
+		string name,dept;
+		int id;
+	public:
+		void accept1();
+		void display1();
+	};
+	void staff :: accept1()
+	{
+		cout<<"Enter your name: ";
+		cin>>name;
+		cout<<"Enter your department: ";
+		cin>>dept;
+		cout<<"Enter your id: ";
+		cin>>id;
+	}
+	 void staff :: display1()
+	{
+		 cout<<"------------Staff Info------------"<<endl;
+		 cout<<"Your name is "<<name<<endl;
+		 cout<<"Your department is "<<dept<<endl;
+		 cout<<"Your id is "<<id<<endl;
+	}
+	//Derived class 1
+	class teacher : public staff
+	{
+	private:
+		 string subject;
+		 int experience;
+	public:
+		 void accept2();
+		 void display2();
+	};
+	void teacher :: accept2()
+	{
+		 accept1();
+		 cout<<"Enter your subject: ";
+		 cin>>subject;
+		 cout<<"Enter your experience: ";
+		 cin>>experience;
+	}
+	void teacher :: display2()
+	{
+		 display1();
+		 cout<<"Your subject is "<<subject<<endl;
+		 cout<<"Your experience is "<<experience<<endl;
+		 cout<<"-------------------------------------------------------"<<endl;
+	}
+	
+    //Derived class 2
+	class support_staff : public staff
+   {
+   private:
+		string area_of_support;
+   public:
+		void accept3();
+		void display3();
+   };
+	void support_staff :: accept3()
+	{
+		accept1();
+		cout<<"Enter your area of support: ";
+		cin>>area_of_support;
+	}
+	void support_staff :: display3()
+	{
+		display1();
+		cout<<"Your area of support is "<<area_of_support<<endl;
+	}
+   int main ()
+   {
+   	cout<<"--------Welcome to Educational Institution System--------"<<endl;
+   	 int p,num;
+   	 char q;
+   	 do
+   	 {
+   		 cout<<"1.Accept and display for teachers 2.Accept and display for support staff\n"<<endl;
+   		 cin>>p;
+   		 cout<<"Enter number entries you want: "<<endl;
+   		 cin>>num;
+   		 teacher t[num];
+   		 support_staff s[num];
+   		 switch(p)
+   		 {
+   		 case 1:
+   		 {
+   		     for(int i=0; i<num;i++)
+   		     {
+			 cout<<"----------Enter details of teacher----------\n"<<i+1<<endl;
+			 t[i].accept2();
+			 }
+		 for(int i=0; i<num;i++)
+		     {
+			 cout<<"----------Details of teacher----------\n"<<i+1<<endl;
+			 t[i].display2();
+			 }
+   			 break;
+   		 }
+   		 case 2:
+   		{
+   		     for(int i=0; i<num;i++)
+   		     {
+			 cout<<"----------Enter details of support staff----------\n"<<i+1<<endl;
+			 s[i].accept3();
+			 }
+		     for(int i=0; i<num;i++)
+		     {
+			 cout<<"----------Details of support staff----------\n"<<i+1<<endl;
+			 s[i].display3();
+			 }
+   			 break;
+   		 }
+        default:
+            cout << "Invalid choice.\n";
+        }
+   		 cout<<"Do you want to continue(y/n): "<<endl;
+   		 cin>>q;
+   	 }
+   	 while(q=='y' || q=='Y');
+	     return 0;
+   }
+
