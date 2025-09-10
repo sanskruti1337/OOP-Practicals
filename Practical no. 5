@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+class shape
+{
+	public: 
+	int x, y,area;
+	virtual void display_area()=0;
+virtual void get_data(){
+	cout<<"Enter the side x:";
+	cin>>x;
+	cout<<"Enter the side y:";
+	cin>>y;
+	}
+};
+class triangle : public shape{
+    void display_area(){
+	double area = 0.5*x*y;
+	cout<<"Area of triangle:"<<area;
+	}
+};
+class rectangle : public shape {
+    void display_area() {
+    int area = x * y;
+    cout << "Area of rectangle: " << area << endl;
+    }
+};
+int main(){
+  shape* ptr;
+    triangle t;
+    rectangle r;
+
+    cout << "Triangle:" << endl;
+    ptr = &t;
+    ptr->get_data();
+    ptr->display_area();
+
+    cout << "\nRectangle:" << endl;
+    ptr = &r;
+    ptr->get_data();
+    ptr->display_area();
+    
+	return 0;
+	}
