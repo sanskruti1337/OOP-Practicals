@@ -1,0 +1,27 @@
+#include <iostream>
+#include <map>   // header file for map associative container
+using namespace std;
+
+int main() {
+    // creating a map to store state name as key and population as value
+    map<string, int> populationMap;
+
+    // inserting state names with their population
+    populationMap["Maharashtra"] = 123000000;
+    populationMap["Karnataka"] = 68000000;
+    populationMap["Gujarat"] = 70000000;
+    populationMap["Rajasthan"] = 81000000;
+    populationMap["Punjab"] = 30000000;
+
+    // displaying population of all states
+    cout << "State\t\tPopulation" << endl;
+    cout << "-----------------------------" << endl;
+
+    // iterating through the map to print state and population
+    for (auto it = populationMap.begin(); it != populationMap.end(); ++it) {
+        cout << it->first << "\t" << it->second << endl;
+    }
+
+    return 0;
+}
+
