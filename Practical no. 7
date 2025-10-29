@@ -1,0 +1,48 @@
+//============================================================================
+// Name        : file.cpp
+// Author      :
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+#include <iostream>
+#include <fstream>
+using namespace std;
+class inventory {
+   string name;
+   int id;
+   int Qnt;
+public:
+   void accept();
+   void display(ofstream &Myfile);
+};
+void inventory::accept() {
+   cout << "Enter the name of product: ";
+   cin >> name;
+   cout << "\nEnter item id: ";
+   cin >> id;
+   cout << "\nEnter quantity: ";
+   cin >> Qnt;
+}
+void inventory::display(ofstream &Myfile) {
+   Myfile << "Product: " << name << endl;
+   Myfile << "ID: " << id << endl;
+   Myfile << "Quantity: " << Qnt << endl;
+}
+int main() {
+   ofstream Myfile("file.txt");
+   Myfile << "Inventory\n";
+   inventory obj[2];
+   for(int i=0;i<2;i++)
+   {
+       obj[i].accept();
+   }
+for (int i=0;i<2;i++)
+{
+	  obj[i].display(Myfile);
+}
+   cout << "Data has been written to file.txt." << endl
+   		Myfile.close();
+   return 0;
+}
+
